@@ -4,7 +4,7 @@
 
 /**
  * print_char - Prints char
- * @type: Lists of arguments
+ * @types: Lists of arguments
  * @buffer: Buffer array to handle
  * @flags: Calculates active flags
  * @width: width
@@ -13,7 +13,7 @@
  * Return: Numbers of chars printed
  */
 int print_char(va_list types, char buffer[],
-		int flags, int width, int precision, int size)
+	int flags, int width, int precision, int size)
 {
 	char c = va_arg(tpes, int);
 
@@ -24,16 +24,16 @@ int print_char(va_list types, char buffer[],
 
 /**
  * print_string - Prints a string
- * @type: Lists of arguments
- * @buffer: Buffer array to handle 
- * @flag: Calculates the active flags
+ * @types: Lists of arguments
+ * @buffer: Buffer array to handle
+ * @flags: Calculates the active flags
  * @width: Width
  * @precision: Precision specification
  * @size: Size of specifier
  *
  * Return: Number of chars printed
  */
-int print_string(va_list types, char buffer[], 
+int print_string(va_list types, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	int length = 0, i;
@@ -107,7 +107,7 @@ int print_percent(va_list types, char buffer[],
 
 /**
  * print_int - Print int
- * @type: Lists of arguments
+ * @types: Lists of arguments
  * @buffer: Buffer array to handle
  * @flags: Calculates active flags
  * @width: get width
@@ -116,7 +116,7 @@ int print_percent(va_list types, char buffer[],
  *
  * Return: Number of chars print
  */
-int print_int(va_lisy types, char buffer[], 
+int print_int(va_lisy types, char buffer[],
 		int flags, int width, int precision, int size)
 {
 	int i = BUFF_SIZE - 2;
@@ -140,12 +140,12 @@ int print_int(va_lisy types, char buffer[],
 	while (num > 0)
 	{
 		buffer[i--] = (num % 10) + '0';
-		num /= 10; 
+		num /= 10;
 	}
 
 	i++;
 
-	return (write_number(is_nagative, i, buffer, flags, precision, size, width))
+	return (write_number(is_nagative, i, buffer, flags, precision, size, width));
 }
 
 /**************** PRINTS BINARY ***************/
@@ -176,11 +176,11 @@ int print_binary(va_list types, char buffer[],
 
 	n = va_arg(types, unsigned int);
 	m = 2147483648; /** (2 ^ 31) **/
-	a[0] = n/m;
-	for (i =1; i < 32; i++)
+	a[0] = n / m;
+	for (i = 1; i < 32; i++)
 	{
 		m /= 2;
-		a[i] = (n/m) % 2;
+		a[i] = (n / m) % 2;
 	}
 	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
@@ -193,6 +193,5 @@ int print_binary(va_list types, char buffer[],
 			count++
 		}
 	}
-	
 	return (count)
 }
